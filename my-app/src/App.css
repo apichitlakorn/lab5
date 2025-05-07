@@ -6,13 +6,64 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatingBubbles {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
 body {
   min-height: 100vh;
-  background: linear-gradient(to bottom right, #e0f2fe, #f3e8ff);
+  background: linear-gradient(-45deg, #e0f2fe, #dbeafe, #f3e8ff, #fae8ff);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: floatingBubbles 15s infinite linear;
 }
 
 .app-container {
@@ -21,6 +72,8 @@ body {
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  position: relative;
+  z-index: 10;
 }
 
 .card {
@@ -31,17 +84,42 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
 
 .card:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transform: translateY(-2px);
+  transform: translateY(-5px);
 }
 
 .card-header {
   background: linear-gradient(to right, #3b82f6, #8b5cf6);
   padding: 1.5rem;
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  animation: shineEffect 5s infinite ease-in-out;
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .course-info {

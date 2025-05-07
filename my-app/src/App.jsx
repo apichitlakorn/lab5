@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    // Create floating bubbles
+    const createBubbles = () => {
+      const container = document.body;
+      const bubbleCount = 15;
+      
+      for (let i = 0; i < bubbleCount; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        
+        // Randomize bubble properties
+        const size = Math.random() * 80 + 20; // 20-100px
+        const left = Math.random() * 100; // 0-100%
+        const duration = Math.random() * 10 + 10; // 10-20s
+        const delay = Math.random() * 5; // 0-5s
+        
+        // Apply styles
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${left}%`;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDelay = `${delay}s`;
+        
+        container.appendChild(bubble);
+      }
+    };
+    
+    createBubbles();
+    
+    // Cleanup function
+    return () => {
+      const bubbles = document.querySelectorAll('.bubble');
+      bubbles.forEach(bubble => bubble.remove());
+    };
+  }, []);
+
   return (
     <div className="app-container">
       <div className="card">
@@ -13,7 +49,7 @@ function App() {
               <circle cx="6" cy="18" r="3"></circle>
               <path d="M18 9a9 9 0 0 1-9 9"></path>
             </svg>
-            <p>CS4982 - DevOps</p>
+            <p>DevOps</p>
           </div>
           <h1>Assignment 5</h1>
           <p className="subtitle">Auto Deployment with Jenkins</p>
