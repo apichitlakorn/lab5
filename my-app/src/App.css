@@ -6,6 +6,41 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Cat Animation */
+@keyframes catWalk {
+  0% {
+    transform: translateX(-150px) scaleX(1);
+  }
+  45% {
+    transform: translateX(180px) scaleX(1);
+  }
+  50% {
+    transform: translateX(180px) scaleX(-1);
+  }
+  95% {
+    transform: translateX(-150px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-150px) scaleX(1);
+  }
+}
+
+@keyframes catTail {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes catEar {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 60% { transform: rotate(15deg); }
+  40%, 80% { transform: rotate(-15deg); }
+}
+
+@keyframes catPaw {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
@@ -88,9 +123,158 @@ body::after {
   z-index: 10;
 }
 
+/* Cat design */
+.cat {
+  position: absolute;
+  top: -30px;
+  left: -150px;
+  width: 60px;
+  height: 35px;
+  z-index: 100;
+  animation: catWalk 12s infinite linear;
+}
+
+.cat-body {
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  background-color: #f97316;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.cat-head {
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  background-color: #f97316;
+  border-radius: 50%;
+  top: -5px;
+  left: 40px;
+}
+
+.cat-ear {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid #f97316;
+}
+
+.cat-ear-left {
+  top: -12px;
+  left: 45px;
+  transform-origin: bottom center;
+  animation: catEar 1.2s infinite ease-in-out;
+}
+
+.cat-ear-right {
+  top: -12px;
+  left: 60px;
+  transform-origin: bottom center;
+  animation: catEar 1.5s infinite ease-in-out;
+}
+
+.cat-eye {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1e3a8a;
+  border-radius: 50%;
+  top: 8px;
+}
+
+.cat-eye-left {
+  left: 48px;
+}
+
+.cat-eye-right {
+  left: 63px;
+}
+
+.cat-nose {
+  position: absolute;
+  width: 5px;
+  height: 3px;
+  background-color: #1e293b;
+  border-radius: 50%;
+  top: 15px;
+  left: 55px;
+}
+
+.cat-mouth {
+  position: absolute;
+  width: 8px;
+  height: 3px;
+  border-bottom: 2px solid #1e293b;
+  border-radius: 50%;
+  top: 18px;
+  left: 54px;
+}
+
+.cat-tail {
+  position: absolute;
+  width: 30px;
+  height: 8px;
+  background-color: #f97316;
+  border-radius: 0 50% 50% 0;
+  top: 15px;
+  left: -25px;
+  transform-origin: right center;
+  animation: catTail 0.8s infinite ease-in-out;
+}
+
+.cat-legs {
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  background-color: #f97316;
+  border-radius: 0 0 5px 5px;
+}
+
+.cat-leg-1 {
+  top: 30px;
+  left: 12px;
+  animation: catPaw 0.4s infinite alternate ease-in-out;
+}
+
+.cat-leg-2 {
+  top: 30px;
+  left: 28px;
+  animation: catPaw 0.4s 0.2s infinite alternate ease-in-out;
+}
+
+.cat-leg-3 {
+  top: 30px;
+  left: 44px;
+  animation: catPaw 0.4s 0.1s infinite alternate ease-in-out;
+}
+
+.cat-shadow {
+  position: absolute;
+  width: 60px;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  top: 35px;
+  left: 0;
+}
+
 .card:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   transform: translateY(-5px);
+}
+
+.card:hover .cat {
+  animation-duration: 8s;
+}
+
+.card:hover .cat-tail {
+  animation-duration: 0.5s;
+}
+
+.card:hover .cat-ear {
+  animation-duration: 0.8s;
 }
 
 .card-header {

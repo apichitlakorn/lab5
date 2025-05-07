@@ -41,6 +41,23 @@ function App() {
   return (
     <div className="app-container">
       <div className="card">
+        {/* Cat Animation */}
+        <div className="cat">
+          <div className="cat-body"></div>
+          <div className="cat-head"></div>
+          <div className="cat-ear cat-ear-left"></div>
+          <div className="cat-ear cat-ear-right"></div>
+          <div className="cat-eye cat-eye-left"></div>
+          <div className="cat-eye cat-eye-right"></div>
+          <div className="cat-nose"></div>
+          <div className="cat-mouth"></div>
+          <div className="cat-tail"></div>
+          <div className="cat-legs cat-leg-1"></div>
+          <div className="cat-legs cat-leg-2"></div>
+          <div className="cat-legs cat-leg-3"></div>
+          <div className="cat-shadow"></div>
+        </div>
+        
         <div className="card-header">
           <div className="course-info">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,7 +66,7 @@ function App() {
               <circle cx="6" cy="18" r="3"></circle>
               <path d="M18 9a9 9 0 0 1-9 9"></path>
             </svg>
-            <p>DevOps</p>
+            <p>CS4982 - DevOps</p>
           </div>
           <h1>Assignment 5</h1>
           <p className="subtitle">Auto Deployment with Jenkins</p>
