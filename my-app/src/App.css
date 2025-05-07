@@ -1,59 +1,122 @@
-body {
+/* App.css */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #a78bfa, #fbcfe8, #fde68a);
-  background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
-  height: 100vh;  /* Make sure body takes full height */
-  display: flex;
-  justify-content: center;
-  align-items: center;  /* This will center content vertically */
 }
 
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e0f2fe, #f3e8ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .app-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%;  /* Ensure app-container takes full height */
+  min-height: 100vh;
 }
 
 .card {
-  background-color: white;
-  padding: 2.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
-  text-align: center;
-  box-sizing: border-box;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.card h1 {
+.card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  padding: 1.5rem;
+  color: white;
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+}
+
+.course-info svg {
+  margin-right: 0.5rem;
+}
+
+.course-info p {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.card-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.card-header .subtitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.submitted-section {
   margin-bottom: 1rem;
-  font-size: 2rem;
-  color: #1f2937;
 }
 
-.subtitle {
-  font-size: 1.1rem;
+.submitted-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.submitted-header svg {
+  margin-right: 0.5rem;
+  color: #3b82f6;
+}
+
+.submitted-header p {
   color: #4b5563;
-  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
-.submitted .label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #374151;
+.submitted-content {
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border-left: 4px solid #3b82f6;
 }
 
-.submitted p {
-  margin: 0.2rem 0;
+.submitted-content p {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.submitted-content p:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+.submission-date {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submission-date p {
+  font-size: 0.75rem;
   color: #6b7280;
 }
