@@ -28,7 +28,6 @@ function App() {
         <div className="submitted">
           <p className="label">Submitted by:</p>
           <p>Apichit Lakorn — B6512767</p>
-          <p>Kamonchanok Thonnondang — B6526405</p>
         </div>
       </div>
     </div>
