@@ -192,24 +192,22 @@ body::after {
 
 .cat-ear {
   position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 16px solid #f97316;
+  width: 12px;
+  height: 16px;
+  background-color: #f97316;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform-origin: bottom center;
 }
 
 .cat-ear-left {
   top: -12px;
   left: 45px;
-  transform-origin: bottom center;
   animation: catEar 1.2s infinite ease-in-out;
 }
 
 .cat-ear-right {
   top: -12px;
   left: 60px;
-  transform-origin: bottom center;
   animation: catEar 1.5s infinite ease-in-out;
 }
 
