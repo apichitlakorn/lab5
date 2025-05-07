@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        FIREBASE_TOKEN = credentials('firebase-token')
+        FIREBASE_TOKEN = credentials('FIREBASE_TOKEN')
     }
 
     stages {
