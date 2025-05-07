@@ -29,35 +29,69 @@ function App() {
       }
     };
     
+    // Create cats
+    const createCats = () => {
+      const container = document.body;
+      const catPositions = [
+        { top: '15%', left: '-80px', delay: 0, direction: 1 },
+        { top: '40%', left: '-80px', delay: 3, direction: 1 },
+        { top: '65%', left: '-80px', delay: 6, direction: 1 },
+        { top: '80%', left: '-80px', delay: 9, direction: 1 }
+      ];
+      
+      catPositions.forEach((position, index) => {
+        const cat = document.createElement('div');
+        cat.className = 'cat wandering-cat';
+        cat.innerHTML = `
+          <div class="cat-body"></div>
+          <div class="cat-head"></div>
+          <div class="cat-ear cat-ear-left"></div>
+          <div class="cat-ear cat-ear-right"></div>
+          <div class="cat-eye cat-eye-left"></div>
+          <div class="cat-eye cat-eye-right"></div>
+          <div class="cat-nose"></div>
+          <div class="cat-mouth"></div>
+          <div class="cat-tail"></div>
+          <div class="cat-legs cat-leg-1"></div>
+          <div class="cat-legs cat-leg-2"></div>
+          <div class="cat-legs cat-leg-3"></div>
+          <div class="cat-shadow"></div>
+        `;
+        
+        // Apply unique position and animation delay
+        cat.style.top = position.top;
+        cat.style.left = position.left;
+        cat.style.animationDelay = `${position.delay}s`;
+        
+        // Change color for variety
+        const colors = ['#f97316', '#f59e0b', '#737373', '#fde047'];
+        const catColor = colors[index % colors.length];
+        
+        const catParts = cat.querySelectorAll('.cat-body, .cat-head, .cat-ear, .cat-tail, .cat-legs');
+        catParts.forEach(part => {
+          part.style.backgroundColor = catColor;
+        });
+        
+        container.appendChild(cat);
+      });
+    };
+    
     createBubbles();
+    createCats();
     
     // Cleanup function
     return () => {
       const bubbles = document.querySelectorAll('.bubble');
       bubbles.forEach(bubble => bubble.remove());
+      
+      const cats = document.querySelectorAll('.wandering-cat');
+      cats.forEach(cat => cat.remove());
     };
   }, []);
 
   return (
     <div className="app-container">
       <div className="card">
-        {/* Cat Animation */}
-        <div className="cat">
-          <div className="cat-body"></div>
-          <div className="cat-head"></div>
-          <div className="cat-ear cat-ear-left"></div>
-          <div className="cat-ear cat-ear-right"></div>
-          <div className="cat-eye cat-eye-left"></div>
-          <div className="cat-eye cat-eye-right"></div>
-          <div className="cat-nose"></div>
-          <div className="cat-mouth"></div>
-          <div className="cat-tail"></div>
-          <div className="cat-legs cat-leg-1"></div>
-          <div className="cat-legs cat-leg-2"></div>
-          <div className="cat-legs cat-leg-3"></div>
-          <div className="cat-shadow"></div>
-        </div>
-        
         <div className="card-header">
           <div className="course-info">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -67,6 +67,25 @@
   }
 }
 
+/* Cat walking across screen */
+@keyframes catWalkScreen {
+  0% {
+    transform: translateX(-100px) scaleX(1);
+  }
+  45% {
+    transform: translateX(calc(100vw + 50px)) scaleX(1);
+  }
+  50% {
+    transform: translateX(calc(100vw + 50px)) scaleX(-1);
+  }
+  95% {
+    transform: translateX(-100px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-100px) scaleX(1);
+  }
+}
+
 body {
   min-height: 100vh;
   background: linear-gradient(-45deg, #e0f2fe, #dbeafe, #f3e8ff, #fae8ff);
@@ -134,12 +153,21 @@ body::after {
   animation: catWalk 12s infinite linear;
 }
 
-.cat-body {
-  position: absolute;
+/* Cats wandering outside the card */
+.wandering-cat {
+  position: fixed;
+  width: 60px;
+  height: 35px;
+  z-index: 5;
+  animation: catWalkScreen 20s infinite linear;
+}
+
+.wandering-cat .cat-body {
   width: 60px;
   height: 35px;
   background-color: #f97316;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
 }
 
 .cat-head {
@@ -150,6 +178,16 @@ body::after {
   border-radius: 50%;
   top: -5px;
   left: 40px;
+}
+
+.wandering-cat .cat-head {
+  width: 30px;
+  height: 25px;
+  background-color: #f97316;
+  border-radius: 50%;
+  top: -5px;
+  left: 40px;
+  position: absolute;
 }
 
 .cat-ear {
